@@ -15,7 +15,7 @@
         </a>
     </li>
     <li class="bottom-nav-item">
-        <a href="#" class="bottom-nav-link">
+        <a href="{{ route('sekretaris.data-santri') }}" class="bottom-nav-link">
             <i data-feather="users" class="bottom-nav-icon"></i>
             <span>Santri</span>
         </a>
