@@ -969,3 +969,13 @@
         gap: 3px !important;
     }
 }
+/* Admin dashboard table: preserve readable columns on narrow screens. */
+@media (max-width: 640px) {
+    .admin-dashboard-user-table {
+        min-width: 620px !important;
+    }
+    .admin-dashboard-user-table th,
+    .admin-dashboard-user-table td {
+        white-space: nowrap;
+    }
+}
