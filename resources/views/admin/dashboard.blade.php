@@ -7,6 +7,20 @@
     @include('admin.partials.sidebar-menu')
 @endsection
 
+@push('styles')
+<style>
+@media (max-width: 1024px) {
+    .admin-dashboard-grid { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 640px) {
+    .admin-dashboard-actions { width: 100%; flex-direction: column; }
+    .admin-dashboard-actions a { width: 100%; justify-content: center; }
+    .admin-dashboard-user-table th,
+    .admin-dashboard-user-table td { padding: 12px 10px !important; }
+}
+</style>
+@endpush
+
 @section('content')
 <div style="width: 100%;">
     <!-- Header -->
@@ -24,7 +38,7 @@
                 </div>
                 <p style="color: rgba(255,255,255,0.95) !important; font-size: 1rem; margin: 0; font-weight: 500;">Kelola sistem, user, dan backup database dengan mudah</p>
             </div>
-            <div style="display: flex; gap: 12px;">
+            <div class="admin-dashboard-actions" style="display: flex; gap: 12px;">
                 @if(auth()->user()->role !== 'rois')
                 <a href="{{ route('backup.download') }}" style="background: rgba(255, 255, 255, 0.2); color: white; padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.3); transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
                     <i data-feather="download" style="width: 18px; height: 18px;"></i>
@@ -123,7 +137,7 @@
     </div>
 
     <!-- Main Grid -->
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px;">
+    <div class="admin-dashboard-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px;">
         <!-- User Management -->
         <div style="background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #f1f5f9;">
             <div style="padding: 24px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
@@ -138,7 +152,7 @@
                 @endif
             </div>
             <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse;">
+                <table class="admin-dashboard-user-table" style="width: 100%; border-collapse: collapse;">
                     <thead>
                         <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">
                             <th style="padding: 16px 24px; text-align: left; font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">User Info</th>
