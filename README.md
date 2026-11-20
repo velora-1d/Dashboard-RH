@@ -118,8 +118,8 @@ Sistem Keuangan Terintegrasi:
 
 ```bash
 # Clone repository
-git clone https://github.com/mahinutsmannawawi20-svg/dashboard-riyadlul-huda.git
-cd dashboard-riyadlul-huda
+git clone https://github.com/velora-1d/dashboard-rh-web.git
+cd dashboard-rh-web
 
 # Install dependencies
 composer install
