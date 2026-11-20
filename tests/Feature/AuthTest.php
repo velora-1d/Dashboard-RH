@@ -90,8 +90,11 @@ class AuthTest extends TestCase
         /** @var \App\Models\User $pendidikan */
         $pendidikan = User::factory()->create(['role' => 'pendidikan']);
 
-        // Admin can access admin dashboard
-        $this->actingAs($admin)->get('/admin/dashboard')->assertStatus(200);
+        // Admin can access admin dashboard and see its main heading
+        $this->actingAs($admin)
+            ->get('/admin/dashboard')
+            ->assertStatus(200)
+            ->assertSee('Admin Dashboard');
 
         // Pendidikan cannot access admin dashboard
         $this->actingAs($pendidikan)->get('/admin/dashboard')->assertStatus(403);
