@@ -54,6 +54,7 @@ class SantriTest extends TestCase
         ];
 
         $response = $this->actingAs($this->user)->post('/sekretaris/data-santri', $santriData);
+        $response->assertRedirect();
 
         $this->assertDatabaseHas('santris', [
             'nama_santri' => 'Ahmad Maulana',
@@ -80,6 +81,8 @@ class SantriTest extends TestCase
             'status' => 'aktif',
         ]);
 
+        $response->assertRedirect();
+
         $this->assertDatabaseHas('santris', [
             'id' => $santri->id,
             'nama_santri' => 'Updated Name',
@@ -98,6 +101,8 @@ class SantriTest extends TestCase
         ]);
 
         $response = $this->actingAs($this->user)->delete("/sekretaris/data-santri/{$santri->id}");
+        $response->assertRedirect();
+
 
         $this->assertDatabaseHas('santris', [
             'id' => $santri->id,
